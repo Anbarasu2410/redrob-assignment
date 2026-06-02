@@ -1,0 +1,27 @@
+team_name: "Anbarasu2410"
+github_repo: "https://github.com/Anbarasu2410/redrob-assignment"
+sandbox_link: "https://huggingface.co/spaces/Anbarasu2410/redrob-ranker"
+
+approach_summary: >
+  Hybrid semantic + ML ranker. Stage 1: sentence-transformers (all-MiniLM-L6-v2)
+  cosine similarity between candidate profile text and JD text gives a semantic
+  relevance score. Stage 2: 14 engineered features (title alignment, career AI depth
+  at product companies, skill coverage across embeddings/retrieval/ranking/LLM domains,
+  production evidence, YoE fit, GitHub activity, location, education tier, consulting
+  penalty, honeypot detection). Stage 3: GradientBoostingRegressor trained on
+  synthetic relevance labels derived from JD criteria combines all signals.
+  Stage 4: behavioral multiplier (platform activity, response rate, notice period,
+  availability) applied as soft multiplier [0.35, 1.0] to demote unreachable candidates.
+
+models_used:
+  - "sentence-transformers/all-MiniLM-L6-v2 (free, local, CPU)"
+  - "scikit-learn GradientBoostingRegressor"
+  - "scikit-learn TfidfVectorizer (fallback)"
+
+ai_tools_used:
+  - "Claude (development assistance)"
+
+ranking_runtime_seconds: 45
+ranking_memory_gb: 1.5
+uses_gpu: false
+calls_external_api_during_ranking: false
