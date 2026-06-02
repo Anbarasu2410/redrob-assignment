@@ -1,0 +1,5 @@
+# Redrob Hackathon — Candidate Ranker
+# All standard library except python-docx (used only for reading docs, not ranking)
+# The ranking pipeline (rank.py) has ZERO external dependencies beyond stdlib.
+# python-docx is optional — only needed if you want to re-read the .docx source files.
+python-docx==1.1.2
